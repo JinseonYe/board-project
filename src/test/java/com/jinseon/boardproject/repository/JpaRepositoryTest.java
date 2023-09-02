@@ -1,4 +1,4 @@
-package repository;
+package com.jinseon.boardproject.repository;
 
 import static org.assertj.core.api.Assertions.*;
 
