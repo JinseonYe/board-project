@@ -14,6 +14,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Index;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
@@ -22,7 +23,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 @Table(indexes = {
 	@Index(columnList = "title"),
 	@Index(columnList = "hashtag"),
@@ -31,18 +32,27 @@ import lombok.ToString;
 })
 @EntityListeners(AuditingEntityListener.class)
 @Entity
-public class Article extends AuditingFields{
+public class Article extends AuditingFields {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Setter @Column(nullable = false) private String title; // 제목
-	@Setter @Column(nullable = false, length = 10000) private String content; // 내용
+	@Setter
+	@ManyToOne(optional = false)
+	private UserAccount userAccount; // 유저 정보 (ID)
 
-	@Setter private String hashtag; // 해시태그
+	@Setter
+	@Column(nullable = false)
+	private String title; // 제목
+	@Setter
+	@Column(nullable = false, length = 10000)
+	private String content; // 내용
 
-	@OrderBy("id")
+	@Setter
+	private String hashtag; // 해시태그
+
+	@OrderBy("createdAt DESC")
 	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
 	@ToString.Exclude
 	private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
@@ -50,16 +60,16 @@ public class Article extends AuditingFields{
 	protected Article() {
 	}
 
-	private Article(String title, String content, String hashtag) {
-		this.title = title;
+	private Article(UserAccount userAccount, String title, String content, String hashtag) {
+		this.userAccount = userAccount;
 		this.content = content;
 		this.hashtag = hashtag;
 	}
 
-	public static Article of(String title, String content, String hashtag) {
-		return new Article(title, content, hashtag);
-	}
+	public static Article of(UserAccount userAccount, String title, String content, String hashtag) {
+		return new Article(userAccount, title, content, hashtag);
 
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -74,6 +84,7 @@ public class Article extends AuditingFields{
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 }
 
 
