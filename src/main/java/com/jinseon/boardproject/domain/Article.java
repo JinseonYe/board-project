@@ -26,8 +26,8 @@ import lombok.ToString;
 @Table(indexes = {
 	@Index(columnList = "title"),
 	@Index(columnList = "hashtag"),
-	@Index(columnList = "createAt"),
-	@Index(columnList = "createBy")
+	@Index(columnList = "createdAt"),
+	@Index(columnList = "createdBy")
 })
 @EntityListeners(AuditingEntityListener.class)
 @Entity

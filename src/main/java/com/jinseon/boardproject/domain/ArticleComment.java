@@ -21,8 +21,8 @@ import lombok.ToString;
 @ToString
 @Table(indexes = {
 	@Index(columnList = "content"),
-	@Index(columnList = "createAt"),
-	@Index(columnList = "createBy")
+	@Index(columnList = "createdAt"),
+	@Index(columnList = "createdBy")
 })
 @EntityListeners(AuditingEntityListener.class)
 @Entity
