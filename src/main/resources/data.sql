@@ -1,4 +1,7 @@
-INSERT INTO article (title, content, hashtag, create_at, create_by, modified_at, modified_by)
+INSERT INTO user_account (user_id, user_password, nickname, email, memo, created_at, created_by, modified_at, modified_by)
+VALUES ('johndoe', 'password123', 'johndoe@example.com', 'John Doe', 'This is a sample memo', CURRENT_TIMESTAMP, '생성자1', CURRENT_TIMESTAMP, '수정자1');;
+
+INSERT INTO article (title, content, hashtag, created_at, created_by, modified_at, modified_by)
 VALUES
     ('제목1', '내용1', '해시태그1', CURRENT_TIMESTAMP, '생성자1', CURRENT_TIMESTAMP, '수정자1'),
     ('제목2', '내용2', '해시태그2', CURRENT_TIMESTAMP, '생성자2', CURRENT_TIMESTAMP, '수정자2'),
@@ -11,7 +14,7 @@ VALUES
     ('제목9', '내용9', '해시태그9', CURRENT_TIMESTAMP, '생성자9', CURRENT_TIMESTAMP, '수정자9'),
     ('제목10', '내용10', '해시태그10', CURRENT_TIMESTAMP, '생성자10', CURRENT_TIMESTAMP, '수정자10');
 
-INSERT INTO article_comment (article_id, content, create_at, create_by, modified_at, modified_by)
+INSERT INTO article_comment (article_id, content, created_at, created_by, modified_at, modified_by)
 VALUES
     (1, '댓글 내용 1', CURRENT_TIMESTAMP, '댓글 작성자 1', CURRENT_TIMESTAMP, '댓글 수정자 1'),
     (1, '댓글 내용 2', CURRENT_TIMESTAMP, '댓글 작성자 2', CURRENT_TIMESTAMP, '댓글 수정자 2'),
