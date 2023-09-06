@@ -28,20 +28,12 @@ import lombok.ToString;
 @Entity
 public class ArticleComment extends AuditingFields {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 
-	@Setter
-	@ManyToOne(optional = false)
-	private UserAccount userAccount; // 유저 정보 (ID)
+	@Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
+	@Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
 
-	@Setter
-	@ManyToOne(optional = false)
-	private Article article; // 게시글 (ID)
-	@Setter
-	@Column(nullable = false, length = 500)
-	private String content; // 내용
+	@Setter @Column(nullable = false, length = 500) private String content; // 내용
 
 	protected ArticleComment() {
 	}
