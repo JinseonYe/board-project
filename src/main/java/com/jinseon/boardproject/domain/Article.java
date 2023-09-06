@@ -4,12 +4,9 @@ import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,38 +27,31 @@ import lombok.ToString;
 	@Index(columnList = "createdAt"),
 	@Index(columnList = "createdBy")
 })
-@EntityListeners(AuditingEntityListener.class)
 @Entity
 public class Article extends AuditingFields {
+
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Setter
-	@ManyToOne(optional = false)
-	private UserAccount userAccount; // 유저 정보 (ID)
+	@Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
 
-	@Setter
-	@Column(nullable = false)
-	private String title; // 제목
-	@Setter
-	@Column(nullable = false, length = 10000)
-	private String content; // 내용
+	@Setter @Column(nullable = false) private String title; // 제목
+	@Setter @Column(nullable = false, length = 10000) private String content; // 내용
 
-	@Setter
-	private String hashtag; // 해시태그
+	@Setter private String hashtag; // 해시태그
 
+	@ToString.Exclude
 	@OrderBy("createdAt DESC")
 	@OneToMany(mappedBy = "article", cascade = CascadeType.ALL)
-	@ToString.Exclude
 	private final Set<ArticleComment> articleComments = new LinkedHashSet<>();
 
-	protected Article() {
-	}
+	protected Article() {}
 
 	private Article(UserAccount userAccount, String title, String content, String hashtag) {
 		this.userAccount = userAccount;
+		this.title = title;
 		this.content = content;
 		this.hashtag = hashtag;
 	}

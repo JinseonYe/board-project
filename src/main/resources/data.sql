@@ -14,15 +14,15 @@ VALUES
     (1, '제목9', '내용9', '해시태그9', CURRENT_TIMESTAMP, '생성자9', CURRENT_TIMESTAMP, '수정자9'),
     (1, '제목10', '내용10', '해시태그10', CURRENT_TIMESTAMP, '생성자10', CURRENT_TIMESTAMP, '수정자10');
 
-INSERT INTO article_comment (article_id, content, created_at, created_by, modified_at, modified_by)
+INSERT INTO article_comment (article_id, user_account_id, content, created_at, created_by, modified_at, modified_by)
 VALUES
-    (1, '댓글 내용 1', CURRENT_TIMESTAMP, '댓글 작성자 1', CURRENT_TIMESTAMP, '댓글 수정자 1'),
-    (1, '댓글 내용 2', CURRENT_TIMESTAMP, '댓글 작성자 2', CURRENT_TIMESTAMP, '댓글 수정자 2'),
-    (2, '댓글 내용 3', CURRENT_TIMESTAMP, '댓글 작성자 3', CURRENT_TIMESTAMP, '댓글 수정자 3'),
-    (2, '댓글 내용 4', CURRENT_TIMESTAMP, '댓글 작성자 4', CURRENT_TIMESTAMP, '댓글 수정자 4'),
-    (3, '댓글 내용 5', CURRENT_TIMESTAMP, '댓글 작성자 5', CURRENT_TIMESTAMP, '댓글 수정자 5'),
-    (3, '댓글 내용 6', CURRENT_TIMESTAMP, '댓글 작성자 6', CURRENT_TIMESTAMP, '댓글 수정자 6'),
-    (4, '댓글 내용 7', CURRENT_TIMESTAMP, '댓글 작성자 7', CURRENT_TIMESTAMP, '댓글 수정자 7'),
-    (4, '댓글 내용 8', CURRENT_TIMESTAMP, '댓글 작성자 8', CURRENT_TIMESTAMP, '댓글 수정자 8'),
-    (5, '댓글 내용 9', CURRENT_TIMESTAMP, '댓글 작성자 9', CURRENT_TIMESTAMP, '댓글 수정자 9'),
-    (5, '댓글 내용 10', CURRENT_TIMESTAMP, '댓글 작성자 10', CURRENT_TIMESTAMP, '댓글 수정자 10');
+    (1, 1, '댓글 내용 1', CURRENT_TIMESTAMP, '댓글 작성자 1', CURRENT_TIMESTAMP, '댓글 수정자 1'),
+    (1, 1, '댓글 내용 2', CURRENT_TIMESTAMP, '댓글 작성자 2', CURRENT_TIMESTAMP, '댓글 수정자 2'),
+    (2, 1, '댓글 내용 3', CURRENT_TIMESTAMP, '댓글 작성자 3', CURRENT_TIMESTAMP, '댓글 수정자 3'),
+    (2, 1, '댓글 내용 4', CURRENT_TIMESTAMP, '댓글 작성자 4', CURRENT_TIMESTAMP, '댓글 수정자 4'),
+    (3, 1, '댓글 내용 5', CURRENT_TIMESTAMP, '댓글 작성자 5', CURRENT_TIMESTAMP, '댓글 수정자 5'),
+    (3, 1, '댓글 내용 6', CURRENT_TIMESTAMP, '댓글 작성자 6', CURRENT_TIMESTAMP, '댓글 수정자 6'),
+    (4, 1, '댓글 내용 7', CURRENT_TIMESTAMP, '댓글 작성자 7', CURRENT_TIMESTAMP, '댓글 수정자 7'),
+    (4, 1, '댓글 내용 8', CURRENT_TIMESTAMP, '댓글 작성자 8', CURRENT_TIMESTAMP, '댓글 수정자 8'),
+    (5, 1, '댓글 내용 9', CURRENT_TIMESTAMP, '댓글 작성자 9', CURRENT_TIMESTAMP, '댓글 수정자 9'),
+    (5, 1, '댓글 내용 10', CURRENT_TIMESTAMP, '댓글 작성자 10', CURRENT_TIMESTAMP, '댓글 수정자 10');
