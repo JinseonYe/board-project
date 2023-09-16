@@ -1,7 +1,6 @@
 package com.jinseon.boardproject.service;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.DisplayName;
@@ -166,6 +165,20 @@ class ArticleServiceTest {
 			then(articleRepository).should().deleteById(articleId);
 		}
 
+	@DisplayName("게시글 수를 조회하면, 게시글 수를 반환한다")
+	@Test
+	void givenNothing_whenCountingArticles_thenReturnsArticleCount() {
+		// Given
+		long expected = 0L;
+		given(articleRepository.count()).willReturn(expected);
+
+		// When
+		long actual = sut.getArticleCount();
+
+		// Then
+		assertThat(actual).isEqualTo(expected);
+		then(articleRepository).should().count();
+	}
 
 		private UserAccount createUserAccount() {
 			return UserAccount.of(
